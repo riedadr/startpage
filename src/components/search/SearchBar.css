@@ -2,12 +2,6 @@
     color: theme("colors.black");
 }
 
-.Searchbar #blurred {
-    background-color: transparent;
-    border-radius: .25rem;
-    backdrop-filter: blur(25px);
 
-    color: white;
-}
 
 

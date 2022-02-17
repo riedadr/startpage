@@ -102,7 +102,7 @@ export default function WidgetSettings() {
                 </div>
 
                 <div className="flex justify-between">
-                    <p>Searchbar blur (not supported by Firefox)</p>
+                    <p>blurred widgets (not supported by Firefox)</p>
                     <Switch checked={blur} onChange={toggleBlur} />
                 </div>
             </div>

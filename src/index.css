@@ -21,22 +21,52 @@ code {
     width: 100vw;
 }
 
-.Searchbar  {
+.widgets {
     position: relative;
-    top: 10%;
+    top: 1rem;
     left: 50%;
     transform: translate(-50%);
 
-    width: 80vw;
     max-width: 1000px;
+    width: calc(100vw - 2rem);
+    height: auto;
     
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+.widgets #blurred {
+    background-color: transparent;
+    border-radius: 0.25rem;
+    backdrop-filter: blur(25px);
+    color: white;
+}
+
+.widget {
+    color: theme("colors.white");
+    background-color: theme("colors.slate.800");
+    border-radius: 1rem;
+    border: 2px solid theme("colors.accent");
+    padding: 0.75rem;
+    margin: 1rem;
+}
+
+.light .widget {
+    color: theme("colors.black");
+    background-color: theme("colors.white");
+}
+
+.Searchbar {
+    grid-column-start: 1;
+    grid-column-end: end; 
+    margin: 1rem;
+}
+
+
+
 @media only screen and (min-width: 600px) {
-    .Searchbar {
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%);
+    .widgets {
+        top: 30vh;
     }
 }
 

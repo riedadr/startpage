@@ -50,11 +50,10 @@ class SearchBar extends React.Component {
 
         return (
             <div className="Searchbar">
-                <div className="background"></div>
                 <form
                     className="search-form input-bar flex gap-2 p-3 bg-white dark:bg-slate-800 dark:text-white rounded-full border-2 border-solid border-accent" id={localStorage.blur ? "blurred" : ""}
                     onSubmit={startSearch}
-                    autocomplete="off"
+                    autoComplete="off"
                 >
                     <select
                         name="site"
@@ -72,7 +71,7 @@ class SearchBar extends React.Component {
                     </select>
 
                     <input
-                        className="border-b-2 border-solid border-slate-600 bg-transparent w-full"
+                        className="border-b-2 border-solid border-markup bg-transparent w-full"
                         autoFocus
                         name="query"
                         onChange={checkQuery}

@@ -5,6 +5,7 @@ import { useState } from "react";
 import BackgroundSettings from "./components/BackgroundSettings";
 import SearchBar from "./components/search/SearchBar";
 import Settings from "./components/Settings";
+import Clock from "./components/widgets/Clock";
 import WidgetSettings from "./components/WidgetSettings";
 
 function App() {
@@ -41,8 +42,12 @@ function App() {
             </style>
             <main>
                 <div className="page" id="search">
-                    <SearchBar className="SearchBar" />
+                    <div class="widgets">
+                        <Clock />
+                        <SearchBar className="SearchBar" />
+                    </div>
                 </div>
+                
                 <Button
                     className="fixed bottom-2 right-2"
                     onClick={() => toggleSettings(true)}
@@ -54,7 +59,7 @@ function App() {
                     opened={settings}
                     onClose={() => toggleSettings(false)}
                 >
-                    <div class="flex flex-col gap-5">
+                    <div className="flex flex-col gap-5">
                         <Settings />
                         <BackgroundSettings />
                         <WidgetSettings />
