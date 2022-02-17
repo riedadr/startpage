@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Modal } from "@mantine/core";
+import { useState } from "react";
+import SearchBar from "./components/search/SearchBar";
+import Settings from "./components/Settings";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [settings, toggleSettings] = useState(false);
+
+    const getBg = () => {
+        let bg = localStorage.bg;
+        if (bg !== null && bg !== undefined) {
+            if (bg.substring(0, 4) === "http") return `url(${bg})`;
+            return bg;
+        }
+        return "#334155";
+    };
+    
+    return (
+        <>
+            <style jsx="true">
+                {`
+                    :root {
+                        --accent: ${localStorage.color
+                            ? localStorage.color
+                            : "#008dc9"};
+                    }
+
+                    body {
+                        background: ${getBg()};
+                        background-attachment: fixed;
+                        -webkit-background-size: cover;
+                        -moz-background-size: cover;
+                        -o-background-size: cover;
+                        background-size: cover;
+                    }
+                `}
+            </style>
+            <main>
+                <div className="page" id="search">
+                    <SearchBar className="SearchBar" />
+                </div>
+                <Button
+                    className="fixed bottom-2 right-2"
+                    onClick={() => toggleSettings(true)}
+                >
+                    <FontAwesomeIcon icon={faCog} />
+                </Button>
+                <Modal
+                    title="Settings"
+                    opened={settings}
+                    onClose={() => toggleSettings(false)}
+                >
+                    <Settings />
+                </Modal>
+            </main>
+        </>
+    );
 }
 
 export default App;
