@@ -5,7 +5,6 @@
 .Searchbar #blurred {
     background-color: transparent;
     border-radius: .25rem;
-    border: none;
     backdrop-filter: blur(25px);
 
     color: white;

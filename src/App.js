@@ -2,8 +2,10 @@ import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Modal } from "@mantine/core";
 import { useState } from "react";
+import BackgroundSettings from "./components/BackgroundSettings";
 import SearchBar from "./components/search/SearchBar";
 import Settings from "./components/Settings";
+import WidgetSettings from "./components/WidgetSettings";
 
 function App() {
     const [settings, toggleSettings] = useState(false);
@@ -16,7 +18,7 @@ function App() {
         }
         return "#334155";
     };
-    
+
     return (
         <>
             <style jsx="true">
@@ -52,7 +54,11 @@ function App() {
                     opened={settings}
                     onClose={() => toggleSettings(false)}
                 >
-                    <Settings />
+                    <div class="flex flex-col gap-5">
+                        <Settings />
+                        <BackgroundSettings />
+                        <WidgetSettings />
+                    </div>
                 </Modal>
             </main>
         </>
