@@ -20,6 +20,7 @@ function App() {
         return "#334155";
     };
 
+
     return (
         <>
             <style jsx="true">
@@ -27,6 +28,9 @@ function App() {
                     :root {
                         --accent: ${localStorage.color
                             ? localStorage.color
+                            : "#008dc9"};
+                        --border: ${localStorage.border
+                            ? localStorage.border
                             : "#008dc9"};
                     }
 
@@ -42,12 +46,19 @@ function App() {
             </style>
             <main>
                 <div className="page" id="search">
-                    <div class="widgets">
-                        <Clock />
+                    <div className="widgets">
+                        <div className="widget-row text-black dark:text-white">
+                            {localStorage.user && <h1 className="text-center">Hi, {localStorage.user}</h1>}
+                            
+                        </div>
+                        <div className="widget-row">
+                            <Clock />
+
+                        </div>
                         <SearchBar className="SearchBar" />
                     </div>
                 </div>
-                
+
                 <Button
                     className="fixed bottom-2 right-2"
                     onClick={() => toggleSettings(true)}

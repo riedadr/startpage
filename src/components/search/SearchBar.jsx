@@ -49,9 +49,9 @@ class SearchBar extends React.Component {
         };
 
         return (
-            <div className="Searchbar">
+            <div className="widget Searchbar">
                 <form
-                    className="search-form input-bar flex gap-2 p-3 bg-white dark:bg-slate-800 dark:text-white rounded-full border-2 border-solid border-accent" id={localStorage.blur ? "blurred" : ""}
+                    className="search-form input-bar flex gap-2 p-3 bg-white dark:bg-slate-800 dark:text-white rounded-full border-2 border-solid border-border" id={localStorage.blur ? "blurred" : ""}
                     onSubmit={startSearch}
                     autoComplete="off"
                 >

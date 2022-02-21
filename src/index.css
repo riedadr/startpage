@@ -23,18 +23,17 @@ code {
 
 .widgets {
     position: relative;
-    top: 1rem;
+    width: calc(100vw - 2rem);
+    max-width: 1000px;
+    top: 30%;
     left: 50%;
     transform: translate(-50%);
 
-    max-width: 1000px;
-    width: calc(100vw - 2rem);
-    height: auto;
-    
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    justify-content: center;
 }
-
 .widgets #blurred {
     background-color: transparent;
     border-radius: 0.25rem;
@@ -42,33 +41,47 @@ code {
     color: white;
 }
 
+.widget-row {
+    display: flex;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+    justify-content: space-between;
+
+    display: grid;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .widget {
     color: theme("colors.white");
     background-color: theme("colors.slate.800");
     border-radius: 1rem;
-    border: 2px solid theme("colors.accent");
+    border: 2px solid theme("colors.border");
     padding: 0.75rem;
-    margin: 1rem;
 }
-
 .light .widget {
     color: theme("colors.black");
     background-color: theme("colors.white");
 }
 
-.Searchbar {
+
+
+.widget.Searchbar {
+    /*
     grid-column-start: 1;
-    grid-column-end: end; 
-    margin: 1rem;
+    grid-column-end: -1;
+    */
+    border: none;
+    background-color: transparent;
+    padding: 0;
 }
 
-
-
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 600px) {
     .widgets {
-        top: 30vh;
+        top: 1rem;
     }
 }
+
 
 html::-webkit-scrollbar {
     display: none;
