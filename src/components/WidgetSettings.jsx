@@ -69,14 +69,13 @@ export default function WidgetSettings() {
     return (
         <>
             <div className="flex flex-col gap-2">
-                <h1 className="underline text-lg">Widgets</h1>
                 <div className="flex justify-between gap-4">
                     Dark mode (may require reload)
                     <ThemeSwitch />
                 </div>
 
                 <div>
-                    <p>Set accent and border color</p>
+                    <p>Set accent color</p>
                     <form
                         onSubmit={submitColor}
                         className="flex justify-between gap-4"
@@ -101,6 +100,22 @@ export default function WidgetSettings() {
                                 "#ff5000",
                             ]}
                         />
+
+                        <button
+                            className="bg-green-500 text-white px-3 py-1 rounded"
+                            type="submit"
+                        >
+                            <FontAwesomeIcon icon={faCheck} />
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <p>Set border color</p>
+                    <form
+                        onSubmit={submitColor}
+                        className="flex justify-between gap-4"
+                    >
                         <ColorInput
                             value={borderColor}
                             onChange={setBorder}

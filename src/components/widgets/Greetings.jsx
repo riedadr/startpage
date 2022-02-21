@@ -14,7 +14,7 @@ export default class Greetings extends Component {
             const today = new Date();
             let h = today.getHours();
 
-            if (h > 21 && h <= 5) return "Good Night";
+            if (h > 21 || h <= 5) return "Good Night";
             if (h > 5 && h <= 12) return "Good Morning";
             if (h > 12 && h <= 17) return "Good Afternoon";
             if (h > 17 && h <= 21) return "Good Evening";
@@ -27,10 +27,10 @@ export default class Greetings extends Component {
     render() {
         return (
             <div className="text-center">
-                <p>
+                <h2 className="text-4xl">
                     <span className="text-accent">{this.state.msg}</span>,{" "}
                     {this.state.user}
-                </p>
+                </h2>
             </div>
         );
     }

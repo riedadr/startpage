@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +10,10 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+    font-family: 'Amatic SC', cursive;
 }
 
 code {
@@ -25,7 +30,7 @@ code {
     position: relative;
     width: calc(100vw - 2rem);
     max-width: 1000px;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%);
 

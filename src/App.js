@@ -1,4 +1,4 @@
-import { faCog, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBrush, faCog, faImage, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Modal, Tabs } from "@mantine/core";
 import { useState } from "react";
@@ -71,10 +71,10 @@ function App() {
                         <Tabs.Tab label="User" icon={<FontAwesomeIcon icon={faUser}/>}>
                             <Settings />
                         </Tabs.Tab>
-                        <Tabs.Tab label="Background" icon={<FontAwesomeIcon icon={faUser}/>}>
+                        <Tabs.Tab label="Background" icon={<FontAwesomeIcon icon={faImage}/>}>
                             <BackgroundSettings />
                         </Tabs.Tab>
-                        <Tabs.Tab label="Theme" icon={<FontAwesomeIcon icon={faUser}/>}>
+                        <Tabs.Tab label="Theme" icon={<FontAwesomeIcon icon={faBrush}/>}>
                             <WidgetSettings />
                         </Tabs.Tab>
                     </Tabs>

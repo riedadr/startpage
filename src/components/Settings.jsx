@@ -1,7 +1,7 @@
 import {
     faCheck,
     faExclamation,
-    faRefresh,
+    faTrash,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -64,7 +64,7 @@ export default function Settings() {
                             className="bg-red-500 text-white px-3 py-1 rounded"
                             onClick={() => {localStorage.removeItem("user")}}
                         >
-                            <FontAwesomeIcon icon={faRefresh} />
+                            <FontAwesomeIcon icon={faTrash} />
                         </button>
 
                         <button
