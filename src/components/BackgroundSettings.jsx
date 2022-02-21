@@ -88,7 +88,7 @@ export default function BackgroundSettings() {
     return (
         <>
             <div className="flex flex-col gap-2">
-                <h1>Background</h1>
+                <h1 className="underline text-lg">Background</h1>
                 
                 <div className="flex flex-col gap-2">
                     <form

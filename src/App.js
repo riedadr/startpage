@@ -1,16 +1,16 @@
-import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Modal } from "@mantine/core";
+import { Button, Modal, Tabs } from "@mantine/core";
 import { useState } from "react";
 import BackgroundSettings from "./components/BackgroundSettings";
 import SearchBar from "./components/search/SearchBar";
 import Settings from "./components/Settings";
 import Clock from "./components/widgets/Clock";
+import Greetings from "./components/widgets/Greetings";
 import WidgetSettings from "./components/WidgetSettings";
 
 function App() {
     const [settings, toggleSettings] = useState(false);
-
     const getBg = () => {
         let bg = localStorage.bg;
         if (bg !== null && bg !== undefined) {
@@ -19,7 +19,6 @@ function App() {
         }
         return "#334155";
     };
-
 
     return (
         <>
@@ -48,12 +47,10 @@ function App() {
                 <div className="page" id="search">
                     <div className="widgets">
                         <div className="widget-row text-black dark:text-white">
-                            {localStorage.user && <h1 className="text-center">Hi, {localStorage.user}</h1>}
-                            
+                            {localStorage.user ? <Greetings /> : false}
                         </div>
                         <div className="widget-row">
-                            <Clock />
-
+                            {localStorage.clock ? <Clock /> : false}
                         </div>
                         <SearchBar className="SearchBar" />
                     </div>
@@ -70,11 +67,17 @@ function App() {
                     opened={settings}
                     onClose={() => toggleSettings(false)}
                 >
-                    <div className="flex flex-col gap-5">
-                        <Settings />
-                        <BackgroundSettings />
-                        <WidgetSettings />
-                    </div>
+                    <Tabs>
+                        <Tabs.Tab label="User" icon={<FontAwesomeIcon icon={faUser}/>}>
+                            <Settings />
+                        </Tabs.Tab>
+                        <Tabs.Tab label="Background" icon={<FontAwesomeIcon icon={faUser}/>}>
+                            <BackgroundSettings />
+                        </Tabs.Tab>
+                        <Tabs.Tab label="Theme" icon={<FontAwesomeIcon icon={faUser}/>}>
+                            <WidgetSettings />
+                        </Tabs.Tab>
+                    </Tabs>
                 </Modal>
             </main>
         </>

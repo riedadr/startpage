@@ -1,14 +1,19 @@
 import { faCheck, faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ColorInput, Switch } from "@mantine/core";
+import { Checkbox, ColorInput, Switch } from "@mantine/core";
 import { useNotifications } from "@mantine/notifications";
 import React, { useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 
 export default function WidgetSettings() {
-    const [accentColor, setAccent] = useState(localStorage.color ? localStorage.color : "#008dc9");
-    const [borderColor, setBorder] = useState(localStorage.border ? localStorage.border : "#008dc9");
+    const [showClock, setShowClock] = useState(localStorage.clock ? true : false);
     const [blur, setBlur] = useState(localStorage.blur ? true : false);
+    const [accentColor, setAccent] = useState(
+        localStorage.color ? localStorage.color : "#008dc9"
+    );
+    const [borderColor, setBorder] = useState(
+        localStorage.border ? localStorage.border : "#008dc9"
+    );
     const notifications = useNotifications();
 
     //? Notifications
@@ -55,17 +60,23 @@ export default function WidgetSettings() {
         }
     };
 
+    const toggleClock = () => {
+        setShowClock(!showClock);
+        if (!showClock) localStorage.clock = true;
+        else localStorage.removeItem("clock");
+    }
+
     return (
         <>
             <div className="flex flex-col gap-2">
-                <h1>Widgets</h1>
+                <h1 className="underline text-lg">Widgets</h1>
                 <div className="flex justify-between gap-4">
                     Dark mode (may require reload)
                     <ThemeSwitch />
                 </div>
 
                 <div>
-                    <small>Set accent and border color</small>
+                    <p>Set accent and border color</p>
                     <form
                         onSubmit={submitColor}
                         className="flex justify-between gap-4"
@@ -123,6 +134,18 @@ export default function WidgetSettings() {
                 <div className="flex justify-between">
                     <p>blurred widgets (not supported by Firefox)</p>
                     <Switch checked={blur} onChange={toggleBlur} />
+                </div>
+
+                <div>
+                    <p>Select Widgets</p>
+                    <div>
+                        <Checkbox
+                            label="Clock"
+                            color="green"
+                            checked={showClock}
+                            onChange={toggleClock}
+                        />
+                    </div>
                 </div>
             </div>
         </>

@@ -3,12 +3,6 @@ import React, { Component } from "react";
 export default class Clock extends Component {
     constructor(props) {
         super(props);
-        const show = () => {
-            if (!localStorage.widgets) return false;
-            let widlist = localStorage.widgets.split(",");
-            if (widlist.includes("clock")) return true;
-            return false;
-        };
         this.state = {
             hours: 0,
             minutes: 0,
@@ -17,12 +11,36 @@ export default class Clock extends Component {
             date: 0,
             month: 0,
             year: 0,
-            showClock: show(),
+            showClock: localStorage.clock ? true : false,
         };
     }
 
     componentDidMount() {
         if (this.state.showClock) {
+            let week = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+            ];
+
+            let months = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "September",
+                "October",
+                "November",
+                "December",
+            ];
+
             const startTime = () => {
                 const today = new Date();
                 let h = today.getHours();
@@ -31,30 +49,6 @@ export default class Clock extends Component {
                 h = checkTime(h);
                 m = checkTime(m);
                 s = checkTime(s);
-
-                let week = [
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                ];
-
-                let months = [
-                    "January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "September",
-                    "October",
-                    "November",
-                    "December",
-                ];
 
                 let day = week[today.getDay()];
 
